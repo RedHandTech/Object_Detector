@@ -5,8 +5,6 @@ Object_Detector (Machine learning based object detector)
 
 - This is a machine learnng based object detector.
 - It uses [dlib](http://dlib.net).
-- The project is built to demo face, hand, and logo detection.
-- This is a cocoapods project so open the project root in your terminal and run `pod install`. Once the command has finished open the *Object Detector.xcworkspace* file.
 - To run this project add the *dependencies* (see below) and compile *dlib* (see below).
 
 ## Dependencies
@@ -14,7 +12,6 @@ Object_Detector (Machine learning based object detector)
 - DLIB can be downloaded from [here](http://dlib.net). This was written with DLIB version `19.2`.
 - This project requires that the iOS-Release version of dlib be installed into */usr/local/lib/DLIB/iOS*. (see below for compile instructions)
 - This project also requires that *libjpeg* be installed. *libjpeg* can be downloaded via **homebrew**.
-- This project also requires that *Open CV* be installed. *Open CV* can be downloaded via **homebrew**.
 
 ## DLIB Compile Instructions
 
