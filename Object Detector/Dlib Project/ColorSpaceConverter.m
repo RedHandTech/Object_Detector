@@ -12,6 +12,12 @@
 
 @implementation ColorSpaceConverter
 
+/* 
+ * Try this technique:
+ * http://stackoverflow.com/questions/19310437/convert-cmsamplebufferref-to-uiimage-with-yuv-color-space
+ * Else use dlib::assign_image (probs wont use GPU whereas native iOS code probs will.
+ */
+
 core_image_frame* convertFrame(core_image_frame *frame, core_image_format desiredFormat)
 {
     return NULL;
