@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6AB6DC91A7757E4B235F56CB /* libPods-Dlib ProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E823FA3D31FF8B68C707490 /* libPods-Dlib ProjectTests.a */; };
+		86146DF14664121CD39EB5E0 /* libPods-Dlib Project.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 037E5028DF1E10B65206796B /* libPods-Dlib Project.a */; };
 		D465C5DB1E33B9ED00B142A7 /* FaceDetectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D465C5DA1E33B9ED00B142A7 /* FaceDetectorViewController.m */; };
 		D465C5DC1E33B9ED00B142A7 /* FaceDetectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D465C5DA1E33B9ED00B142A7 /* FaceDetectorViewController.m */; };
 		D465C5DF1E33B9FC00B142A7 /* FaceDetectorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D465C5DE1E33B9FC00B142A7 /* FaceDetectorViewModel.m */; };
@@ -20,7 +22,7 @@
 		D465C5EF1E33D48F00B142A7 /* ObjectDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = D465C5ED1E33D48F00B142A7 /* ObjectDetector.mm */; };
 		D465C5F11E33D88100B142A7 /* face-detector.svm in Resources */ = {isa = PBXBuildFile; fileRef = D465C5F01E33D88100B142A7 /* face-detector.svm */; };
 		D46DFDB21E22DC3B005918F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D46DFDB11E22DC3B005918F2 /* main.m */; };
-		D46DFDB51E22DC3B005918F2 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D46DFDB41E22DC3B005918F2 /* AppDelegate.mm */; };
+		D46DFDB51E22DC3B005918F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D46DFDB41E22DC3B005918F2 /* AppDelegate.m */; };
 		D46DFDBB1E22DC3B005918F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46DFDB91E22DC3B005918F2 /* Main.storyboard */; };
 		D46DFDBD1E22DC3B005918F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46DFDBC1E22DC3B005918F2 /* Assets.xcassets */; };
 		D46DFDC01E22DC3B005918F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46DFDBE1E22DC3B005918F2 /* LaunchScreen.storyboard */; };
@@ -28,6 +30,9 @@
 		D4DFCF551E342961000A4FC3 /* ColorSpaceConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DFCF541E342961000A4FC3 /* ColorSpaceConverter.m */; };
 		D4DFCF571E3429CC000A4FC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DFCF561E3429CC000A4FC3 /* QuartzCore.framework */; };
 		D4DFCF591E342A51000A4FC3 /* car_detector.svm in Resources */ = {isa = PBXBuildFile; fileRef = D4DFCF581E342A51000A4FC3 /* car_detector.svm */; };
+		D4E3E6A51E37DCFF00639429 /* ObjectionModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3E6A41E37DCFF00639429 /* ObjectionModule.m */; };
+		D4E3E6AB1E37DF3100639429 /* CameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3E6AA1E37DF3100639429 /* CameraView.m */; };
+		D4E3E6AE1E37DF6C00639429 /* VideoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3E6AD1E37DF6C00639429 /* VideoLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		037E5028DF1E10B65206796B /* libPods-Dlib Project.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dlib Project.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E823FA3D31FF8B68C707490 /* libPods-Dlib ProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dlib ProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		30722A47C81CC6C32D8BA9B3 /* Pods-Dlib Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dlib Project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dlib Project/Pods-Dlib Project.debug.xcconfig"; sourceTree = "<group>"; };
+		32985885D1221423286D3461 /* Pods-Dlib ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dlib ProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dlib ProjectTests/Pods-Dlib ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		806136055917AD3B1BCC9301 /* Pods-Dlib Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dlib Project.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dlib Project/Pods-Dlib Project.release.xcconfig"; sourceTree = "<group>"; };
+		A03C9694B2E5D35C3536C93B /* Pods-Dlib ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dlib ProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dlib ProjectTests/Pods-Dlib ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		D465C5D91E33B9ED00B142A7 /* FaceDetectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDetectorViewController.h; sourceTree = "<group>"; };
 		D465C5DA1E33B9ED00B142A7 /* FaceDetectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceDetectorViewController.m; sourceTree = "<group>"; };
 		D465C5DD1E33B9FC00B142A7 /* FaceDetectorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDetectorViewModel.h; sourceTree = "<group>"; };
@@ -56,7 +67,7 @@
 		D46DFDAD1E22DC3B005918F2 /* Dlib Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dlib Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46DFDB11E22DC3B005918F2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D46DFDB31E22DC3B005918F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D46DFDB41E22DC3B005918F2 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		D46DFDB41E22DC3B005918F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D46DFDBA1E22DC3B005918F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D46DFDBC1E22DC3B005918F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D46DFDBF1E22DC3B005918F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,6 +80,12 @@
 		D4DFCF541E342961000A4FC3 /* ColorSpaceConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSpaceConverter.m; sourceTree = "<group>"; };
 		D4DFCF561E3429CC000A4FC3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D4DFCF581E342A51000A4FC3 /* car_detector.svm */ = {isa = PBXFileReference; lastKnownFileType = file; path = car_detector.svm; sourceTree = "<group>"; };
+		D4E3E6A31E37DCFF00639429 /* ObjectionModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectionModule.h; sourceTree = "<group>"; };
+		D4E3E6A41E37DCFF00639429 /* ObjectionModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectionModule.m; sourceTree = "<group>"; };
+		D4E3E6A91E37DF3100639429 /* CameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraView.h; sourceTree = "<group>"; };
+		D4E3E6AA1E37DF3100639429 /* CameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraView.m; sourceTree = "<group>"; };
+		D4E3E6AC1E37DF6C00639429 /* VideoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoLayer.h; sourceTree = "<group>"; };
+		D4E3E6AD1E37DF6C00639429 /* VideoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +95,7 @@
 			files = (
 				D4DFCF571E3429CC000A4FC3 /* QuartzCore.framework in Frameworks */,
 				D465C5E71E33BA7B00B142A7 /* AVFoundation.framework in Frameworks */,
+				86146DF14664121CD39EB5E0 /* libPods-Dlib Project.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,13 +103,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AB6DC91A7757E4B235F56CB /* libPods-Dlib ProjectTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D465C5D21E33B1AC00B142A7 /* UI */ = {
+		BF1D1D5509F4D008B6139F2D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30722A47C81CC6C32D8BA9B3 /* Pods-Dlib Project.debug.xcconfig */,
+				806136055917AD3B1BCC9301 /* Pods-Dlib Project.release.xcconfig */,
+				32985885D1221423286D3461 /* Pods-Dlib ProjectTests.debug.xcconfig */,
+				A03C9694B2E5D35C3536C93B /* Pods-Dlib ProjectTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D465C5D21E33B1AC00B142A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				D465C5DD1E33B9FC00B142A7 /* FaceDetectorViewModel.h */,
@@ -99,7 +129,7 @@
 				D465C5D91E33B9ED00B142A7 /* FaceDetectorViewController.h */,
 				D465C5DA1E33B9ED00B142A7 /* FaceDetectorViewController.m */,
 			);
-			name = UI;
+			name = View;
 			sourceTree = "<group>";
 		};
 		D465C5D31E33B1C300B142A7 /* Wrappers */ = {
@@ -109,6 +139,8 @@
 				D465C5F01E33D88100B142A7 /* face-detector.svm */,
 				D465C5EC1E33D48F00B142A7 /* ObjectDetector.h */,
 				D465C5ED1E33D48F00B142A7 /* ObjectDetector.mm */,
+				D4E3E6A91E37DF3100639429 /* CameraView.h */,
+				D4E3E6AA1E37DF3100639429 /* CameraView.m */,
 			);
 			name = Wrappers;
 			sourceTree = "<group>";
@@ -122,6 +154,8 @@
 				D465C5E21E33BA2100B142A7 /* CameraFeed.m */,
 				D4DFCF531E342961000A4FC3 /* ColorSpaceConverter.h */,
 				D4DFCF541E342961000A4FC3 /* ColorSpaceConverter.m */,
+				D4E3E6AC1E37DF6C00639429 /* VideoLayer.h */,
+				D4E3E6AD1E37DF6C00639429 /* VideoLayer.m */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -132,6 +166,8 @@
 				D4DFCF561E3429CC000A4FC3 /* QuartzCore.framework */,
 				D4DFCF511E341F2A000A4FC3 /* OpenGLES.framework */,
 				D465C5E61E33BA7B00B142A7 /* AVFoundation.framework */,
+				037E5028DF1E10B65206796B /* libPods-Dlib Project.a */,
+				2E823FA3D31FF8B68C707490 /* libPods-Dlib ProjectTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,6 +179,7 @@
 				D46DFDC91E22DC3B005918F2 /* Dlib ProjectTests */,
 				D46DFDAE1E22DC3B005918F2 /* Products */,
 				D465C5E51E33BA7B00B142A7 /* Frameworks */,
+				BF1D1D5509F4D008B6139F2D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,11 +195,12 @@
 		D46DFDAF1E22DC3B005918F2 /* Dlib Project */ = {
 			isa = PBXGroup;
 			children = (
+				D4E3E6A21E37DCDC00639429 /* Dependency Injection */,
 				D465C5D41E33B1C900B142A7 /* Core */,
 				D465C5D31E33B1C300B142A7 /* Wrappers */,
-				D465C5D21E33B1AC00B142A7 /* UI */,
+				D465C5D21E33B1AC00B142A7 /* View */,
 				D46DFDB31E22DC3B005918F2 /* AppDelegate.h */,
-				D46DFDB41E22DC3B005918F2 /* AppDelegate.mm */,
+				D46DFDB41E22DC3B005918F2 /* AppDelegate.m */,
 				D46DFDB91E22DC3B005918F2 /* Main.storyboard */,
 				D46DFDBC1E22DC3B005918F2 /* Assets.xcassets */,
 				D46DFDBE1E22DC3B005918F2 /* LaunchScreen.storyboard */,
@@ -189,6 +227,15 @@
 			path = "Dlib ProjectTests";
 			sourceTree = "<group>";
 		};
+		D4E3E6A21E37DCDC00639429 /* Dependency Injection */ = {
+			isa = PBXGroup;
+			children = (
+				D4E3E6A31E37DCFF00639429 /* ObjectionModule.h */,
+				D4E3E6A41E37DCFF00639429 /* ObjectionModule.m */,
+			);
+			name = "Dependency Injection";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -196,9 +243,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D46DFDCF1E22DC3B005918F2 /* Build configuration list for PBXNativeTarget "Dlib Project" */;
 			buildPhases = (
+				276D532AD74CFF05F6ED378D /* [CP] Check Pods Manifest.lock */,
 				D46DFDA91E22DC3A005918F2 /* Sources */,
 				D46DFDAA1E22DC3A005918F2 /* Frameworks */,
 				D46DFDAB1E22DC3A005918F2 /* Resources */,
+				A515FDEF568E6914E23B1BB1 /* [CP] Embed Pods Frameworks */,
+				82190F36133B1F55DE3B9217 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,9 +263,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D46DFDD21E22DC3B005918F2 /* Build configuration list for PBXNativeTarget "Dlib ProjectTests" */;
 			buildPhases = (
+				8473B3FC085231A1BAE7CF5E /* [CP] Check Pods Manifest.lock */,
 				D46DFDC21E22DC3B005918F2 /* Sources */,
 				D46DFDC31E22DC3B005918F2 /* Frameworks */,
 				D46DFDC41E22DC3B005918F2 /* Resources */,
+				C0CD0E04BC6885C0D9B8F556 /* [CP] Embed Pods Frameworks */,
+				BFF47855418182E7FB772B1D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,6 +343,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		276D532AD74CFF05F6ED378D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		82190F36133B1F55DE3B9217 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dlib Project/Pods-Dlib Project-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8473B3FC085231A1BAE7CF5E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A515FDEF568E6914E23B1BB1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dlib Project/Pods-Dlib Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFF47855418182E7FB772B1D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dlib ProjectTests/Pods-Dlib ProjectTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0CD0E04BC6885C0D9B8F556 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dlib ProjectTests/Pods-Dlib ProjectTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D46DFDA91E22DC3A005918F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -297,12 +443,15 @@
 			files = (
 				D465C5E31E33BA2100B142A7 /* CameraFeed.m in Sources */,
 				D465C5DB1E33B9ED00B142A7 /* FaceDetectorViewController.m in Sources */,
-				D46DFDB51E22DC3B005918F2 /* AppDelegate.mm in Sources */,
+				D46DFDB51E22DC3B005918F2 /* AppDelegate.m in Sources */,
 				D4DFCF551E342961000A4FC3 /* ColorSpaceConverter.m in Sources */,
 				D46DFDB21E22DC3B005918F2 /* main.m in Sources */,
 				D465C5EA1E33CF1B00B142A7 /* CoreImage.c in Sources */,
 				D465C5DF1E33B9FC00B142A7 /* FaceDetectorViewModel.m in Sources */,
+				D4E3E6AB1E37DF3100639429 /* CameraView.m in Sources */,
 				D465C5EE1E33D48F00B142A7 /* ObjectDetector.mm in Sources */,
+				D4E3E6A51E37DCFF00639429 /* ObjectionModule.m in Sources */,
+				D4E3E6AE1E37DF6C00639429 /* VideoLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +590,7 @@
 		};
 		D46DFDD01E22DC3B005918F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30722A47C81CC6C32D8BA9B3 /* Pods-Dlib Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -515,6 +665,7 @@
 		};
 		D46DFDD11E22DC3B005918F2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 806136055917AD3B1BCC9301 /* Pods-Dlib Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -589,6 +740,7 @@
 		};
 		D46DFDD31E22DC3B005918F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32985885D1221423286D3461 /* Pods-Dlib ProjectTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 7DDX24S6TZ;
@@ -602,6 +754,7 @@
 		};
 		D46DFDD41E22DC3B005918F2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A03C9694B2E5D35C3536C93B /* Pods-Dlib ProjectTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 7DDX24S6TZ;

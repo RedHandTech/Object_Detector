@@ -23,10 +23,12 @@ core_image_frame* core_image_create_frame(void *data, size_t width, size_t heigh
 
 void core_image_release_frame(core_image_frame *frame)
 {
-    if (frame->image_data != NULL) {
-        free(frame->image_data);
+    if (frame != NULL) {
+        if (frame->image_data != NULL) {
+            free(frame->image_data);
+        }
+        free(frame);
     }
-    free(frame);
     
     frame->image_data = NULL;
     frame = NULL;

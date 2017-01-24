@@ -7,9 +7,15 @@
 //
 
 #import "FaceDetectorViewController.h"
+
+#import <Objection/Objection.h>
+
 #import "FaceDetectorViewModel.h"
+#import "CameraView.h"
 
 @interface FaceDetectorViewController ()
+
+@property (nonatomic, weak) IBOutlet CameraView *cameraView;
 
 @property (nonatomic, strong) FaceDetectorViewModel *viewModel;
 
@@ -17,10 +23,30 @@
 
 @implementation FaceDetectorViewController
 
+objection_requires(@"viewModel")
+
 - (void)viewDidLoad
 {
-    // TODO: Use dependency injection!
-    self.viewModel = [[FaceDetectorViewModel alloc] init];
+    [super viewDidLoad];
+    
+    [[JSObjection defaultInjector] injectDependencies:self];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.cameraView beginCameraFeed];
 }
 
 @end
+
+
+
+
+
+
+
+
+
+

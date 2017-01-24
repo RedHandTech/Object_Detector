@@ -21,23 +21,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, World!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzO-89-ZyX">
-                                <rect key="frame" x="61" y="323" width="252" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="252" id="tlV-Ea-LAv"/>
-                                    <constraint firstAttribute="height" constant="21" id="ual-Ts-3RA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3jK-Lj-j2Q" customClass="CameraView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="HzO-89-ZyX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9w8-d5-TWx"/>
-                            <constraint firstItem="HzO-89-ZyX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ig4-g7-QNj"/>
+                            <constraint firstAttribute="trailing" secondItem="3jK-Lj-j2Q" secondAttribute="trailing" id="Dou-Pc-xU6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3jK-Lj-j2Q" secondAttribute="bottom" id="eT4-gR-7VX"/>
+                            <constraint firstItem="3jK-Lj-j2Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gDt-A5-Db1"/>
+                            <constraint firstItem="3jK-Lj-j2Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="i9m-dY-ZpC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cameraView" destination="3jK-Lj-j2Q" id="PVF-i6-kSU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
