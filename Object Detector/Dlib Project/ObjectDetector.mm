@@ -51,6 +51,13 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
     });
 }
 
+- (void)processImage:(CGImageRef)image
+{
+    dlib::array<array2d<unsigned char> > dlibImg;
+    // there is dlib::mat and then pass that to the arr or... just assign the pixel values
+    
+}
+
 #pragma mark - Private
 
 - (NSError *)errorWithCode:(ObjectDetectorError)code message:(NSString *)message

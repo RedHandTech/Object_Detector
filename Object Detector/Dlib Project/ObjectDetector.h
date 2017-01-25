@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import <QuartzCore/QuartzCore.h>
+
 typedef NS_ENUM(int, ObjectDetectorError) {
     ObjectDetectorErrorUnknown,
     ObjectDetectorErrorInvalidFilePath
@@ -25,5 +27,7 @@ typedef void (^ObjectDetectorLoadingHandler)(BOOL success, NSError * _Nullable e
  @param handler The completion handler.
  */
 - (void)loadSVMFile:(NSString * _Nonnull)path handler:(ObjectDetectorLoadingHandler _Nonnull)handler;
+
+- (void)processImage:(CGImageRef _Nonnull)image;
 
 @end
