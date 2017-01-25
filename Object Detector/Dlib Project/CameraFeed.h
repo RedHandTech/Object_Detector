@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#import "CoreImage.h"
+#import <QuartzCore/QuartzCore.h>
 
 typedef NS_ENUM(int, CameraFeedPixelFormat) {
     CameraFeedPixelFormatBGRA,
@@ -32,11 +31,11 @@ typedef NS_ENUM(NSInteger, CameraFeedError) {
 @protocol CameraFeedDelegate <NSObject>
 @optional
 
-- (void)cameraFeed:(CameraFeed * _Nonnull)cameraFeed didRecieveImageData:(core_image_frame * _Nullable)frame;
+- (void)cameraFeed:(CameraFeed * _Nonnull)cameraFeed didRecieveImage:(CGImageRef _Nullable)image;
 
 @end
 
-typedef void (^CameraFeedHandler)(core_image_frame * _Nonnull frame);
+typedef void (^CameraFeedHandler)(CGImageRef _Nonnull image);
 
 @interface CameraFeed : NSObject
 

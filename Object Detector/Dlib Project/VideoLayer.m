@@ -104,22 +104,23 @@
 
 #pragma mark - <CameraFeedDelegate>
 
-- (void)cameraFeed:(CameraFeed *)cameraFeed didRecieveImageData:(core_image_frame *)frame
+- (void)cameraFeed:(CameraFeed *)cameraFeed didRecieveImage:(CGImageRef _Nullable)image
 {
+    // not called on main thread...
+    
     if (self.processingFrame) {
         // skip frame
-        core_image_release_frame(frame);
+        CGImageRelease(image);
         return;
     }
     
     self.processingFrame = YES;
-    
-    // not called on main thread...
+
     if (_currentFrame != NULL) {
         CGImageRelease(_currentFrame);
     }
     
-    _currentFrame = CGImageRefCreateWithCoreImageRGB(frame);
+    _currentFrame = image;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.contents = (__bridge id)_currentFrame;

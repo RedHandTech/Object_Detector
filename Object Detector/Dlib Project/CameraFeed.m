@@ -8,6 +8,8 @@
 
 #import "CameraFeed.h"
 
+#import <CoreImage/CoreImage.h>
+
 NSString * const kCameraID = @"com.apple.avfoundation.avcapturedevice.built-in_video:0";
 NSString * const kWebcamID = @"com.apple.avfoundation.avcapturedevice.built-in_video:1";
 
@@ -111,35 +113,32 @@ NSString * const kWebcamID = @"com.apple.avfoundation.avcapturedevice.built-in_v
     CVPixelBufferLockBaseAddress(tempBuffer, 0);
     
     //. get info
-    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(tempBuffer);
-    size_t width = CVPixelBufferGetWidth(tempBuffer);
-    size_t height = CVPixelBufferGetHeight(tempBuffer);
-    unsigned char *rawData = (unsigned char *)CVPixelBufferGetBaseAddress(tempBuffer);
+    CGFloat width = (CGFloat)CVPixelBufferGetWidth(tempBuffer);
+    CGFloat height = (CGFloat)CVPixelBufferGetHeight(tempBuffer);
     
-    // copy into own buffer
-    unsigned char *buffer = (unsigned char *)malloc(bytesPerRow * height);
-    memcpy(buffer, rawData, bytesPerRow * height);
+    // create image
+    CIImage *coreImage = [CIImage imageWithCVPixelBuffer:tempBuffer];
+    CIContext *ctx = [CIContext contextWithOptions:nil];
+    CGImageRef image = [ctx createCGImage:coreImage fromRect:CGRectMake(0, 0, width, height)];
     
-    // release temp buffer
-    CVPixelBufferUnlockBaseAddress(tempBuffer, 0);
+    BOOL shouldReleaseImage = YES;
     
-    // create image frame
-    core_image_format imageFormat = [self coreImageFormatForFormat:self.pixelFormat];
-    core_image_frame *frame = core_image_create_frame(buffer, width, height, bytesPerRow / width, imageFormat);
-    
-    BOOL shouldReleaseBuffer = YES;
-    if ([self.delegate respondsToSelector:@selector(cameraFeed:didRecieveImageData:)]) {
-        shouldReleaseBuffer = NO;
-        [self.delegate cameraFeed:self didRecieveImageData:frame];
+    if ([self.delegate respondsToSelector:@selector(cameraFeed:didRecieveImage:)]) {
+        shouldReleaseImage = NO;
+        [self.delegate cameraFeed:self didRecieveImage:image];
     }
     
     if (self.handler) {
-        self.handler(frame);
+        shouldReleaseImage = NO;
+        self.handler(image);
     }
     
-    if (shouldReleaseBuffer) {
-        core_image_release_frame(frame);
+    
+    if (shouldReleaseImage) {
+        CGImageRelease(image);
     }
+    
+    CVPixelBufferUnlockBaseAddress(tempBuffer, 0);
 }
 
 #pragma mark - Private
@@ -221,24 +220,6 @@ NSString * const kWebcamID = @"com.apple.avfoundation.avcapturedevice.built-in_v
             return CameraFeedPixelFormatGreyscale;
         default:
             break;
-    }
-    
-    return -1;
-}
-
-- (core_image_format)coreImageFormatForFormat:(CameraFeedPixelFormat)format
-{
-    switch (format) {
-        case CameraFeedPixelFormatBGR:
-            return kCoreImageFormat_bgr;
-        case CameraFeedPixelFormatRGB:
-            return kCoreImageFormat_rgb;
-        case CameraFeedPixelFormatBGRA:
-            return kCoreImageFormat_bgra;
-        case CameraFeedPixelFormatRGBA:
-            return kCoreImageFormat_rgba;
-        case CameraFeedPixelFormatGreyscale:
-            return kCoreImageFormat_greyscale;
     }
     
     return -1;
