@@ -73,6 +73,11 @@
     self.isStreamActive = NO;
 }
 
+- (void)beginObjectDetectionWithDetector:(ObjectDetector *)objectDetector handler:(CameraViewObjectDetectionHandler)handler
+{
+    // TODO: This...
+}
+
 #pragma mark - Private
 
 - (VideoLayer *)cameraLayer

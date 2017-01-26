@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class CameraFeed;
+@class ObjectDetector;
+@class Detection;
+
+typedef void (^CameraViewObjectDetectionHandler)(NSError * _Nullable error, NSArray<Detection *> * _Nullable detections, BOOL * _Nonnull stop);
 
 @interface CameraView : UIView
 
@@ -31,5 +35,13 @@
  Stops any active stream.
  */
 - (void)stopStream;
+
+/**
+ Begins running object detection using the given object detector.
+
+ @param objectDetector The object detector to use.
+ @param handler An object detection handler.
+ */
+- (void)beginObjectDetectionWithDetector:(ObjectDetector * _Nonnull)objectDetector handler:(CameraViewObjectDetectionHandler _Nonnull)handler;
 
 @end

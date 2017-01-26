@@ -10,15 +10,19 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+@class Detection;
+
 typedef NS_ENUM(int, ObjectDetectorError) {
     ObjectDetectorErrorUnknown,
-    ObjectDetectorErrorInvalidFilePath
+    ObjectDetectorErrorInvalidFilePath,
+    ObjectDetectorErrorAlreadyProcessingImage,
+    ObjectDetectorErrorObjectDetectorNotLoaded
 };
 
 typedef void (^ObjectDetectorLoadingHandler)(BOOL success, NSError * _Nullable error);
+typedef void (^ObjectDetectorProcessingHandler)(BOOL success, NSError * _Nullable error, NSArray<Detection *> * _Nullable detections);
 
 @interface ObjectDetector : NSObject
-
 
 /**
  Asyncronously loads an SVM file for object detection.
@@ -28,6 +32,28 @@ typedef void (^ObjectDetectorLoadingHandler)(BOOL success, NSError * _Nullable e
  */
 - (void)loadSVMFile:(NSString * _Nonnull)path handler:(ObjectDetectorLoadingHandler _Nonnull)handler;
 
-- (void)processImage:(CGImageRef _Nonnull)image;
+/**
+ Runs object detection on the image.
+
+ @param image The image on with to run object detection. MUST BE RGB.
+ @param detectionHandler A handler which is called upon completion.
+ */
+- (void)processImage:(CGImageRef _Nonnull)image detectionHandler:(ObjectDetectorProcessingHandler _Nonnull)detectionHandler;
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
