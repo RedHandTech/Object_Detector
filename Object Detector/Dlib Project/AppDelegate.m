@@ -8,24 +8,11 @@
 
 #import "AppDelegate.h"
 
-#import <Objection/Objection.h>
-
-#import "ObjectionModule.h"
-
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    JSObjectionInjector *injector = [JSObjection createInjector:[[ObjectionModule alloc] init]];
-    [JSObjection setDefaultInjector:injector];
-    
-    return YES;
-}
 
 
 @end

@@ -85,6 +85,20 @@
     [self.cameraFeed stopStream];
     
     self.videoStreamActive = NO;
+    
+    if (_currentFrame != NULL) {
+        CGImageRelease(_currentFrame);
+        _currentFrame = NULL;
+    }
+}
+
+- (CGImageRef)currentFrameCopy
+{
+    if (_currentFrame == NULL) {
+        return NULL;
+    }
+    
+    return CGImageCreateCopy(_currentFrame);
 }
 
 #pragma mark - Private
@@ -118,12 +132,14 @@
 
     if (_currentFrame != NULL) {
         CGImageRelease(_currentFrame);
+        _currentFrame = NULL;
     }
     
     _currentFrame = image;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.contents = (__bridge id)_currentFrame;
+        if (self.refresh) { self.refresh(); }
     });
     
     self.processingFrame = NO;

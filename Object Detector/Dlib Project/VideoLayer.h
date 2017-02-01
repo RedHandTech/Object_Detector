@@ -13,6 +13,11 @@
 @interface VideoLayer : CALayer
 
 /**
+ Called when a new frame is rendered.
+ */
+@property (nonatomic, copy) void (^refresh)();
+
+/**
  Creates a video layer with a camera feed instance.
 
  @param cameraFeed The camera feed for the layer.
@@ -51,6 +56,11 @@
  Whether there is a current video stream.
  */
 @property (nonatomic, readonly) BOOL videoStreamActive;
+
+/**
+ Returns a copy of the current frame being displayed. It is the callers responsibility to manage memory for this image.
+ */
+@property (nonatomic, readonly, nullable) CGImageRef currentFrameCopy;
 
 
 /**

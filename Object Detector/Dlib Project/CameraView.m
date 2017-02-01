@@ -9,16 +9,23 @@
 #import "CameraView.h"
 
 #import "VideoLayer.h"
+#import "ObjectDetector.h"
 
 @interface CameraView ()
 
 @property (nonatomic) BOOL isStreamActive;
-
 @property (nonatomic, strong) VideoLayer *videoLayer;
+@property (nonatomic, strong) ObjectDetector *objectDetector;
+@property (nonatomic, copy) CameraViewObjectDetectionHandler objectDetectionHandler;
+
+@property (nonatomic) BOOL processingFrame;
 
 @end
 
 @implementation CameraView
+{
+    dispatch_queue_t _detectionQueue;
+}
 
 #pragma mark - Public
 
@@ -75,7 +82,15 @@
 
 - (void)beginObjectDetectionWithDetector:(ObjectDetector *)objectDetector handler:(CameraViewObjectDetectionHandler)handler
 {
-    // TODO: This...
+    __weak typeof(self) welf = self;
+    
+    // NOTE:Probably not on main thread
+    self.objectDetector = objectDetector;
+    self.objectDetectionHandler = handler;
+    _detectionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    self.videoLayer.refresh = ^{
+        [welf handleFrameRefreshWithObjectDetectionHandler:handler];
+    };
 }
 
 #pragma mark - Private
@@ -88,6 +103,47 @@
 - (VideoLayer *)webcamLayer
 {
     return [VideoLayer webcamLayer];
+}
+
+- (void)handleFrameRefreshWithObjectDetectionHandler:(CameraViewObjectDetectionHandler)handler
+{
+    // TODO: Work out where crash occurs.
+    // run object detection
+    
+    __weak typeof(self) welf = self;
+    
+    // check to see if object detection is currently in progress
+    if (self.processingFrame) { return; }
+    if (!handler) { return; }
+    
+    // get image copy
+    __block CGImageRef frame = self.videoLayer.currentFrameCopy;
+    if (frame == NULL) { return; }
+    
+    // process the image
+    [self.objectDetector processImage:frame detectionHandler:^(BOOL success, NSError * _Nullable error, NSArray<Detection *> * _Nullable detections){
+        BOOL stop = NO;
+        handler(error, detections, &stop);
+        
+        if (stop) {
+            welf.videoLayer.refresh = nil;
+            welf.objectDetectionHandler = nil;
+            welf.objectDetector = nil;
+        }
+        
+        CGImageRelease(frame);
+        
+        self.processingFrame = NO;
+    }];
+}
+
+#pragma mark - Overrides
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.videoLayer.frame = self.layer.bounds;
 }
 
 @end

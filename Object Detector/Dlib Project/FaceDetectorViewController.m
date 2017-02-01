@@ -8,35 +8,48 @@
 
 #import "FaceDetectorViewController.h"
 
-#import <Objection/Objection.h>
-
-#import "FaceDetectorViewModel.h"
 #import "CameraView.h"
+#import "ObjectDetector.h"
 
 @interface FaceDetectorViewController ()
 
 @property (nonatomic, weak) IBOutlet CameraView *cameraView;
 
-@property (nonatomic, strong) FaceDetectorViewModel *viewModel;
-
 @end
 
 @implementation FaceDetectorViewController
 
-objection_requires(@"viewModel")
-
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    
-    [[JSObjection defaultInjector] injectDependencies:self];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
     [self.cameraView beginCameraFeed];
+    [self setupObjectDetection];
+}
+
+#pragma mark - Private
+
+- (void)setupObjectDetection
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"face-detector" ofType:@"svm"];
+    if (!path) { return; }
+    
+    ObjectDetector *detector = [[ObjectDetector alloc] init];
+    
+    [detector loadSVMFile:path handler:^(BOOL success, NSError *error) {
+        if (!success) {
+            NSLog(@"Error loading svm file: %@", error.localizedDescription);
+        } else {
+            [self.cameraView beginObjectDetectionWithDetector:detector handler:^(NSError *error, NSArray<Detection *> * detections, BOOL *stop){
+                [self objectsDetectedWithError:error detections:detections stop:stop];
+            }];
+        }
+    }];
+}
+
+- (void)objectsDetectedWithError:(NSError *)error detections:(NSArray<Detection *> *)detections stop:(BOOL *)stop
+{
+    NSLog(@"CALLED");
 }
 
 @end

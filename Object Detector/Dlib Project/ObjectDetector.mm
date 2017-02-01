@@ -26,6 +26,9 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
 @end
 
 @implementation ObjectDetector
+{
+    dispatch_queue_t _detectionQueue;
+}
 
 #pragma mark - Constructors
 
@@ -48,6 +51,8 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
         self.detector = det;
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            // setup detection queue
+            _detectionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
             if (handler) {
                 self.isObjectDetectorReady = YES;
                 handler(YES, nil);
@@ -72,8 +77,7 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
     
     self.processingImage = YES;
     
-    dispatch_queue_t queue = dispatch_queue_create("com.RedHand.queue", DISPATCH_QUEUE_CONCURRENT);
-    dispatch_async(queue, ^{
+    dispatch_async(_detectionQueue, ^{
         
         /*
          * NOTE: The following code is not efficient.
