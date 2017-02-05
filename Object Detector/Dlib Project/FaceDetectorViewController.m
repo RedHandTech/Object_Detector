@@ -49,7 +49,7 @@
 
 - (void)objectsDetectedWithError:(NSError *)error detections:(NSArray<Detection *> *)detections stop:(BOOL *)stop
 {
-    NSLog(@"CALLED");
+    
 }
 
 @end

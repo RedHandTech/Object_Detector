@@ -15,7 +15,7 @@
 /**
  Called when a new frame is rendered.
  */
-@property (nonatomic, copy) void (^refresh)();
+@property (nonatomic, copy, nullable) void (^refresh)();
 
 /**
  Creates a video layer with a camera feed instance.

@@ -33,12 +33,20 @@ typedef void (^ObjectDetectorProcessingHandler)(BOOL success, NSError * _Nullabl
 - (void)loadSVMFile:(NSString * _Nonnull)path handler:(ObjectDetectorLoadingHandler _Nonnull)handler;
 
 /**
- Runs object detection on the image.
+ Runs object detection on the image. NOTE: CGImageRef will not be released by the object detector after use.
 
  @param image The image on with to run object detection. MUST BE RGB.
  @param detectionHandler A handler which is called upon completion.
  */
 - (void)processImage:(CGImageRef _Nonnull)image detectionHandler:(ObjectDetectorProcessingHandler _Nonnull)detectionHandler;
+/**
+ Runs object detection on the image.
+ 
+ @param image The image on with to run object detection. MUST BE RGB.
+ @param releaseAfterUse Whether the CGImageRef will be released by the object detector after use.
+ @param detectionHandler A handler which is called upon completion.
+ */
+- (void)processImage:(CGImageRef _Nonnull)image releaseAfterUse:(BOOL)releaseAfterUse detectionHandler:(ObjectDetectorProcessingHandler _Nonnull)detectionHandler;
 
 @end
 

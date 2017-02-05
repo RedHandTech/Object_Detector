@@ -117,10 +117,11 @@
     if (!handler) { return; }
     
     // get image copy
-    __block CGImageRef frame = self.videoLayer.currentFrameCopy;
+    CGImageRef frame = self.videoLayer.currentFrameCopy;
     if (frame == NULL) { return; }
     
     // process the image
+    /*
     [self.objectDetector processImage:frame detectionHandler:^(BOOL success, NSError * _Nullable error, NSArray<Detection *> * _Nullable detections){
         BOOL stop = NO;
         handler(error, detections, &stop);
@@ -131,9 +132,14 @@
             welf.objectDetector = nil;
         }
         
-        CGImageRelease(frame);
-        
         self.processingFrame = NO;
+    }];
+     */
+
+    [self.objectDetector processImage:frame releaseAfterUse:YES detectionHandler:^(BOOL success, NSError * error, NSArray<Detection *> * detections) {
+        if (success) {
+            NSLog(@"Processed frame %i", detections.count);
+        }
     }];
 }
 

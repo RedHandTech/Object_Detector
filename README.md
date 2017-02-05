@@ -1,5 +1,9 @@
 >### WIP
 
+### TODO
+
+* Fix leaks. Look for TODOs in `ObjectDetector.mm`
+
 Object_Detector (Machine learning based object detector)
 ===============
 

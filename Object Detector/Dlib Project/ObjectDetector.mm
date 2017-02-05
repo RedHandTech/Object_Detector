@@ -63,13 +63,28 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
 
 - (void)processImage:(CGImageRef)image detectionHandler:(ObjectDetectorProcessingHandler _Nonnull)detectionHandler
 {
+    [self processImage:image releaseAfterUse:NO detectionHandler:detectionHandler];
+}
+
+- (void)processImage:(CGImageRef)image releaseAfterUse:(BOOL)releaseAfterUse detectionHandler:(ObjectDetectorProcessingHandler)detectionHandler
+{
     if (self.processingImage) {
+        
+        if (releaseAfterUse) {
+            CGImageRelease(image);
+        }
+        
         NSError *error = [self errorWithCode:ObjectDetectorErrorAlreadyProcessingImage message:@"Already processing image."];
         if (detectionHandler) { detectionHandler(NO, error, nil); }
         return;
     }
     
     if (!self.isObjectDetectorReady) {
+        
+        if (releaseAfterUse) {
+            CGImageRelease(image);
+        }
+        
         NSError *error = [self errorWithCode:ObjectDetectorErrorObjectDetectorNotLoaded message:@"Already processing image."];
         if (detectionHandler) { detectionHandler(NO, error, nil); }
         return;
@@ -112,8 +127,11 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
         }
         
         // release quartz resources
-        CFRelease(data);
         CGDataProviderRelease(dataProvider);
+        CFRelease(data);
+        
+        // TODO: Work out leaks here... tricky buggers...
+        //CGImageRelease(image);
         
         // apply object detector
         pyramid_up(dlibImg);
@@ -138,6 +156,7 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
             if (detectionHandler) { detectionHandler(YES, nil, detections); }
         });
         
+        self.processingImage = NO;
     });
 }
 
