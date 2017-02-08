@@ -100,11 +100,13 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
          * This would only involve pointer assigment and wouldn't actually copy the values of the data accross.
          */
         
+        NSLog(@"begin");
+        
         // get image info
         size_t width = CGImageGetWidth(image);
         size_t height = CGImageGetHeight(image);
-        size_t bytesPerRow = CGImageGetBytesPerRow(image);
-        size_t bytesPerPixel = bytesPerRow / width;
+        //size_t bytesPerRow = CGImageGetBytesPerRow(image);
+        //size_t bytesPerPixel = bytesPerRow / width;
         
         // get image data
         CGDataProviderRef dataProvider = CGImageGetDataProvider(image);
@@ -116,15 +118,21 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
         dlibImg.set_size(width, height);
         
         // copy values into dlib image
-        // this is probably the most efficient O(n) (or I guess O(n/bytesPerPixel)?)
-        for (int i = 0; i < width * height; i += bytesPerPixel) {
-            int row = (i / bytesPerPixel) / width;
-            int column = (i / bytesPerPixel) - ((int)width * row);
+        dlibImg.reset();
+        long position = 0;
+        while (dlibImg.move_next()) {
+            rgb_pixel& pixel = dlibImg.element();
+            long bufLocation = position * 3;
+            char r = rawData[bufLocation];
+            char g = rawData[bufLocation + 1];
+            char b = rawData[bufLocation + 2];
             
-            dlibImg[row][column] = rgb_pixel(rawData[i],
-                                             rawData[i + 1],
-                                             rawData[i + 2]);
+            pixel = rgb_pixel(r, g, b);
+            
+            position++;
         }
+        
+        NSLog(@"Data converted");
         
         // release quartz resources
         CGDataProviderRelease(dataProvider);
@@ -136,6 +144,8 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
         // apply object detector
         pyramid_up(dlibImg);
         std::vector<dlib::rectangle> detectionBounds = self.detector(dlibImg);
+        
+        NSLog(@"Detection run: %lu", detectionBounds.size());
         
         /*
          * Here is where shape / landmark detection can take place
