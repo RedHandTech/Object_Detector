@@ -8,10 +8,14 @@
 
 #import "ObjectDetector.h"
 
+#import <UIKit/UIKit.h>
+
 #import "Detection.h"
 
 #include <dlib/image_processing.h>
 #include <dlib/image_io.h>
+
+#define TEMP_IMAGE_PATH [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"temp.jpg"]
 
 using namespace dlib;
 
@@ -102,6 +106,22 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
         
         NSLog(@"begin");
         
+        UIImage *uiImage = [UIImage imageWithCGImage:image];
+        NSError *error = nil;
+        if (![UIImageJPEGRepresentation(uiImage, 1.0) writeToFile:TEMP_IMAGE_PATH options:NSDataWritingAtomic error:&error]) {
+            NSLog(@"Failed to write image to path: %@. Error: %@", TEMP_IMAGE_PATH, error.localizedDescription);
+            return;
+        }
+        
+        array2d<unsigned char> dlibImg;
+        load_image(dlibImg, TEMP_IMAGE_PATH.UTF8String);
+        pyramid_up(dlibImg);
+        
+        std::vector<dlib::rectangle> detections = self.detector(dlibImg);
+        
+        NSLog(@"Detected: %lu", detections.size());
+        
+        /*
         // get image info
         size_t width = CGImageGetWidth(image);
         size_t height = CGImageGetHeight(image);
@@ -146,11 +166,13 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
         std::vector<dlib::rectangle> detectionBounds = self.detector(dlibImg);
         
         NSLog(@"Detection run: %lu", detectionBounds.size());
+         */
         
         /*
          * Here is where shape / landmark detection can take place
          */
         
+        /*
         // convert detections into objc
         NSMutableArray *detections = [[NSMutableArray alloc] initWithCapacity:detectionBounds.size()];
         for (int i = 0; i < detectionBounds.size(); i++) {
@@ -161,10 +183,13 @@ typedef scan_fhog_pyramid<pyramid_down<6> > image_scanner_type;
             b.height = detectionBounds[i].height();
             [detections addObject:[Detection detectionWithPixelBounds:b]];
         }
+         */
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (detectionHandler) { detectionHandler(YES, nil, detections); }
+            if (detectionHandler) { detectionHandler(YES, nil, @[]); }
         });
+        
+        CGImageRelease(image);
         
         self.processingImage = NO;
     });

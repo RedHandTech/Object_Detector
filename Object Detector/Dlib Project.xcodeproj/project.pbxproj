@@ -28,6 +28,7 @@
 		D4DFCF591E342A51000A4FC3 /* car_detector.svm in Resources */ = {isa = PBXBuildFile; fileRef = D4DFCF581E342A51000A4FC3 /* car_detector.svm */; };
 		D4E3E6AB1E37DF3100639429 /* CameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3E6AA1E37DF3100639429 /* CameraView.m */; };
 		D4E3E6AE1E37DF6C00639429 /* VideoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3E6AD1E37DF6C00639429 /* VideoLayer.m */; };
+		D4F0A5721E4BD9B600003BA8 /* firefox-detector.svm in Resources */ = {isa = PBXBuildFile; fileRef = D4F0A5711E4BD9B600003BA8 /* firefox-detector.svm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		D4E3E6AA1E37DF3100639429 /* CameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraView.m; sourceTree = "<group>"; };
 		D4E3E6AC1E37DF6C00639429 /* VideoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoLayer.h; sourceTree = "<group>"; };
 		D4E3E6AD1E37DF6C00639429 /* VideoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoLayer.m; sourceTree = "<group>"; };
+		D4F0A5711E4BD9B600003BA8 /* firefox-detector.svm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "firefox-detector.svm"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		D40066691E38A32800E43A5B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D4F0A5711E4BD9B600003BA8 /* firefox-detector.svm */,
 				D4DFCF581E342A51000A4FC3 /* car_detector.svm */,
 				D465C5F01E33D88100B142A7 /* face-detector.svm */,
 			);
@@ -293,6 +296,7 @@
 				D46DFDBD1E22DC3B005918F2 /* Assets.xcassets in Resources */,
 				D4DFCF591E342A51000A4FC3 /* car_detector.svm in Resources */,
 				D46DFDBB1E22DC3B005918F2 /* Main.storyboard in Resources */,
+				D4F0A5721E4BD9B600003BA8 /* firefox-detector.svm in Resources */,
 				D465C5F11E33D88100B142A7 /* face-detector.svm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
